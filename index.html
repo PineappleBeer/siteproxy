@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>富强</title>
   <meta name="keywords" content="社会主义核心价值观" />
-  <meta name="description" content="富强、民主、文明、和谐，倡导自由、平等、公正、法治，倡导爱国、敬业、诚信、友善" />
+  <meta name="description" content="富强、民主、文明、和谐、自由、平等、公正、法治、爱国、敬业、诚信、友善" />
   <!--网站favicon可以没有或者改为自己的-->
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
 
@@ -902,7 +902,7 @@
 <![endif]-->
 
   <header>
-    <h1>富强</h1>
+    <h1 id="title">富强</h1>
   </header>
   <div id="content">
     <!--内容-->
@@ -912,7 +912,7 @@
         <section class="sousuo">
           <div class="search">
             <div class="search-box">
-              <button class="search-engine-name" id="search-engine-name">Google</button>
+              <button class="search-engine-name" id="search-engine-name">Baidu</button>
               <input type="text" id="txt" class="search-input" placeholder="输入关键词" />
               <button class="search-btn" id="search-btn">搜索</button>
             </div>
@@ -1120,7 +1120,7 @@
         var search = {
           data: [
             {
-              name: 'Google',
+              name: 'Baidu',
               url: '/https/www.google.com/search?q=',
               placeholder: '输入关键词'
             }, {
@@ -1153,6 +1153,21 @@
           window.open(thisSearch + textValue, "_self")
         }
       });
+
+      let words = ('富强、民主、文明、和谐、自由、平等、公正、法治、爱国、敬业、诚信、友善').split('、'), wordInterval = undefined, wordIndex = 0;
+      $('#title').mouseover(function () {
+        wordInterval = setInterval(() => {
+          this.innerHTML = words[wordIndex % 12];
+          wordIndex++;
+        }, 500);
+      });
+      $('#title').mouseout(function () {
+        if (wordInterval) {
+          clearInterval(wordInterval);
+        }
+      });
+
+
       $(document).ready(() => {
         let mouseEventOver = document.createEvent('MouseEvent');
         mouseEventOver.initMouseEvent('mouseover', false, false, null);
