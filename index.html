@@ -94,30 +94,16 @@
     }
 
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
       width: 100%;
       z-index: 100;
       height: 50px;
       background: #FFF;
     }
 
-    header .logo {
-      font-size: 20px;
-      height: 80px;
-      margin: 0;
-      font-weight: 100;
-      position: relative;
-      z-index: 99;
-      border-bottom: 1px solid #e8e8e8;
-      background: #FFF;
+    header h1 {
+      font-family: monospace;
+      font-size: 78px;
       text-align: center;
-    }
-
-    header .logo img {
-      width: 80px;
-      vertical-align: -30px;
     }
 
     header .main {
@@ -352,14 +338,6 @@
       text-align: center;
     }
 
-    #content {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-    }
-
     #content>.Off-left-menu {
       display: none;
     }
@@ -505,10 +483,6 @@
       margin-top: 2.5px;
     }
 
-    #content .content-box {
-      padding-top: 61px
-    }
-
     .content-box {
       max-width: 1400px;
       margin: 0 auto;
@@ -520,7 +494,7 @@
     }
 
     .item>.container-fluid {
-      padding-top: 0;
+      padding-top: 140px;
       margin-top: 0;
     }
 
@@ -739,10 +713,7 @@
     }
 
     @media (min-width: 992px) {
-      header {
-        height: 90px;
-        border-bottom: 1px solid #e8e8e8;
-      }
+      header {}
 
       header .main {
         padding: 0 2px;
@@ -849,6 +820,7 @@
       .search-engine-list li {
         width: 112px;
         margin: 0 15px 15px 0;
+        text-align: center;
       }
 
       #content .main {
@@ -904,7 +876,7 @@
 
       .item>.container-fluid {
         padding: 0;
-        padding-top: 91px;
+        padding-top: 140px;
         margin-top: -65px;
       }
     }
@@ -928,6 +900,10 @@
     <strong>过时的</strong> 浏览器. 请更换一个更好的浏览器来提升用户体验.
 </div>
 <![endif]-->
+
+  <header>
+    <h1>富强</h1>
+  </header>
   <div id="content">
     <!--内容-->
     <div class="main">
@@ -937,7 +913,7 @@
           <div class="search">
             <div class="search-box">
               <button class="search-engine-name" id="search-engine-name">Google</button>
-              <input type="text" id="txt" class="search-input" placeholder="选择引擎，输入关键字，回车/Enter搜索" />
+              <input type="text" id="txt" class="search-input" placeholder="输入关键词" />
               <button class="search-btn" id="search-btn">搜索</button>
             </div>
             <!-- 搜索引擎 -->
@@ -1144,17 +1120,13 @@
         var search = {
           data: [
             {
-              name: 'Google搜索',
-              url: '/https/www.google.com/search?q='
+              name: 'Google',
+              url: '/https/www.google.com/search?q=',
+              placeholder: '输入关键词'
             }, {
-              name: 'Bing搜索',
-              url: '/https/bing.com/search?q='
-            }, {
-              name: 'Yahoo搜索',
-              url: '/https/www.yahoo.com/search?q='
-            }, {
-              name: 'GitHub搜索',
-              url: 'https://github.com/search?q='
+              name: '跳转',
+              url: '',
+              placeholder: '输入目标地址'
             }]
         }
         for (var i = 0; i < search.data.length; i++) {
@@ -1171,7 +1143,8 @@
           var searchNameBtn = document.getElementById("search-engine-name");
           searchNameBtn.innerHTML = search.data[_index].name;
           thisSearch = search.data[_index].url;
-          $('.search-engine').css('display', 'none')
+          $('.search-engine').css('display', 'none');
+          $('input#txt').attr('placeholder', search.data[_index].placeholder);
         })
       })
       $("#search-btn").click(function () {
@@ -1179,6 +1152,11 @@
         if (textValue != '') {
           window.open(thisSearch + textValue, "_self")
         }
+      });
+      $(document).ready(() => {
+        let mouseEventOver = document.createEvent('MouseEvent');
+        mouseEventOver.initMouseEvent('mouseover', false, false, null);
+        $('.search-engine-name, .search-engine').get(0).dispatchEvent(mouseEventOver);
       });
     </script>
   </div>
