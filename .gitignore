@@ -6,6 +6,7 @@ release
 yarn-error.log
 yarn.lock
 .history
-.vscode
 .umirc.local.js
 .now
+bundle.js
+worker/
