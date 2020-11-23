@@ -1157,7 +1157,9 @@
       let words = ('富强、民主、文明、和谐、自由、平等、公正、法治、爱国、敬业、诚信、友善').split('、'), wordInterval = undefined, wordIndex = 0;
       $('#title').mouseover(function () {
         wordInterval = setInterval(() => {
-          this.innerHTML = words[wordIndex % 12];
+          let word = words[wordIndex % 12]
+          this.innerHTML = word;
+          document.title = word;
           wordIndex++;
         }, 500);
       });
