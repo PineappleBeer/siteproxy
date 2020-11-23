@@ -97,9 +97,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 100%;
       z-index: 100;
-      height: 78px;
+      width: 100%;
+      padding-top: 20px;
       background: #FFF;
     }
 
@@ -1164,7 +1164,7 @@
           this.innerHTML = word;
           document.title = word;
           wordIndex++;
-        }, 500);
+        }, 200);
       });
       $('#title').mouseout(function () {
         if (wordInterval) {
