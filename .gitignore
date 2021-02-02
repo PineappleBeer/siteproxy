@@ -9,4 +9,5 @@ yarn.lock
 .umirc.local.js
 .now
 bundle.js
-worker/
+build
+.worker.js

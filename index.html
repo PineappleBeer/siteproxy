@@ -1128,7 +1128,7 @@
               placeholder: '输入关键词'
             }, {
               name: '跳转',
-              url: '',
+              url: '/',
               placeholder: '输入目标地址'
             }]
         }
@@ -1153,7 +1153,12 @@
       $("#search-btn").click(function () {
         var textValue = $('#txt').val();
         if (textValue != '') {
-          window.open(thisSearch + textValue, "_self")
+          if (thisSearch === '/' && textValue.indexOf('http') === 0) {
+            textValue = textValue.replace(/:\//g, '');
+          } else if (thisSearch === '/' && textValue.indexOf('http') != 0) {
+            thisSearch += 'https/';
+          }
+          window.open(thisSearch + textValue, "_self");
         }
       });
 
